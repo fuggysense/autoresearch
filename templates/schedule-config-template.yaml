@@ -1,0 +1,24 @@
+# Schedule Configuration Template — Phase 3
+# Copy to <project-dir>/autoresearch/schedule-config.yaml
+# (<project-dir> = clients/<project>/ or projects/<project>/)
+
+# Budget caps
+budget:
+  per_run: 2.00             # Max USD per single run
+  weekly: 5.00              # Max USD per week
+  monthly: 15.00            # Max USD per month
+
+# Rotation preferences
+rotation:
+  cooldown_hours: 24        # Min hours between runs of same skill
+  max_skills_per_session: 3 # Max skills to optimize in one session
+  priority_weights:
+    usage: 0.40             # How often skill is used (from analytics-usage)
+    staleness: 0.35         # Days since last optimization
+    feedback: 0.25          # User feedback signals
+
+# Scheduling
+schedule:
+  mode: "manual"            # manual | continuous | cron
+  cron_expression: ""       # Only if mode=cron (e.g., "0 2 * * 1" = Mon 2am)
+  deploy_target: ""         # modal | github-actions | empty for manual

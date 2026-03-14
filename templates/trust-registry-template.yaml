@@ -1,0 +1,28 @@
+# Trust Registry Template — Phase 3
+# Copy to <project-dir>/autoresearch/trust-registry.yaml
+# (<project-dir> = clients/<project>/ or projects/<project>/)
+# Tracks earned trust levels per skill for this project
+
+# Trust levels:
+#   L0 (Untested)   — approve rubric + each iteration + final diff
+#   L1 (Supervised) — approve rubric once, approve final only
+#   L2 (Semi-auto)  — just review diff
+#   L3 (Auto)       — notification only
+
+# Graduation criteria:
+#   L0→L1: 3 consecutive successes
+#   L1→L2: 5 consecutive at L1 + rubric accuracy gap < 0.2
+#   L2→L3: 10 consecutive at L2 + zero rollbacks in last 20
+# Demotion: Any rollback → drop 1 level. 2 rollbacks in 30 days → L0.
+
+skills: {}
+  # Example:
+  # copywriting:
+  #   level: 1
+  #   consecutive_successes: 4
+  #   total_runs: 7
+  #   total_rollbacks: 1
+  #   last_rollback: "2026-03-10"
+  #   last_run: "2026-03-14"
+  #   graduated_at:
+  #     L1: "2026-03-12"

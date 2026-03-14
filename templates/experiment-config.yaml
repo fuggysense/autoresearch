@@ -1,0 +1,34 @@
+# Default experiment configuration
+# Override per-run with CLI flags
+
+iterations: 3              # Number of mutation cycles (hard max: 10)
+batch_size: 3              # Outputs per scenario per iteration
+scenarios_count: 3          # Number of test scenarios to generate
+temperature: 0.8           # Generation temperature (higher = more variation)
+
+# Generation settings
+generation:
+  provider: "kilo"          # kilo | gemini | auto
+  model: "minimax/minimax-m2.5"
+  max_tokens: 2048
+  system_prompt_mode: "skill"  # Use target SKILL.md as system prompt
+
+# Evaluation settings
+evaluation:
+  provider: "claude"        # Always Claude for quality
+  model: "sonnet"           # claude-sonnet-4-6
+  rubric_format: "binary"   # binary yes/no per criterion
+
+# Mutation settings
+mutation:
+  provider: "claude"        # Always Claude for precision
+  model: "sonnet"
+  strategy: "minimum_change"  # minimum_change | targeted | exploratory
+  max_diff_lines: 30        # Reject mutations that change too much
+
+# Winner threshold
+winner_threshold_pct: 70    # Score >= 70% of max to be a winner
+
+# Safety
+budget_per_run: 2.00        # Max USD per run
+auto_kill_consecutive_rollbacks: 3
